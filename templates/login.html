@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Logowanie</title>
+  </head>
+  <body>
+    <h1>Logowanie</h1>
+    {% if error %}
+      <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form method="POST" action="{{ url_for('login') }}">
+      <label for="username">Nazwa użytkownika:</label>
+      <input type="text" name="username" id="username">
+      <br>
+      <label for="password">Hasło:</label>
+      <input type="password" name="password" id="password">
+      <br>
+      <input type="submit" value="Zaloguj">
+    </form>
+  <br>
+   <form method="POST" action="{{ url_for('register') }}">
+      <input type="submit" value="REGISTER">
+    </form>
+  </body>
+</html>

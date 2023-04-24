@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{  collection_name  }}</title>
+  </head>
+  ...
+  <body>
+  <form method="POST" action="{{ url_for('logout') }}">
+      <input type="submit" value="LOGOUT">
+    </form>
+  <form method="POST" action="{{ url_for('index') }}">
+      <input type="submit" value="HOME">
+    </form>
+  <form method="POST" action="{{ url_for('register') }}">
+      <input type="submit" value="REGISTER">
+    </form>
+  <form method="POST" action="{{ url_for('login') }}">
+      <input type="submit" value="LOG IN">
+    </form>
+  <center>
+
+    <table border="10" >
+        <CAPTION><h4>{{  collection_name  }}</h4></CAPTION>
+        <tr ALIGN=center bgcolor="gray">
+            <th>Token ID</th>
+            <th>Floor price</th>
+            <th>Rarity rank</th>
+
+        </tr>
+        {% for nft in nft_data %}
+            <tr ALIGN=center>
+                <td>{{ nft.token_id }}</td>
+                <td>{{ nft.nft_price }} CRO</td>
+                <td>{{ nft.rarity_rank }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+  </center>
+  </body>
+</html>
