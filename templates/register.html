@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rejestracja</title>
+  </head>
+  <body>
+    <h1>Rejestracja</h1>
+    {% if message %}
+      <p>{{ message }}</p>
+    {% endif %}
+    <form method="POST">
+      <label>Nazwa użytkownika:</label><br>
+      <input type="text" name="username"><br><br>
+      <label>Hasło:</label><br>
+      <input type="password" name="password"><br><br>
+      <input type="submit" value="Zarejestruj">
+    </form>
+    <br>
+    <a href="{{ url_for('register') }}">Logowanie</a>
+
+  </body>
+</html>

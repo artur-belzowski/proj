@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+    {% block title %}Logowanie{% endblock %}
+{% block content %}
+
+    <form method="POST" action="{{ url_for('logout') }}">
+      <input type="submit" value="Wyloguj">
+    </form>
+
+
+    <table border="10" >
+        <CAPTION><h4>Collection</h4></CAPTION>
+        <tr ALIGN=center bgcolor="gray">
+        <tr>
+            <th>Collection</th>
+            <th>Change 24 floor price</th>
+            <th>Reward Points</th>
+            <th>Floor price</th>
+            <th>GO</th>
+        </tr>
+        {% for collection in collections %}
+        <tr ALIGN=center>
+            <td>{{ collection.name }}</td>
+            {% if collection.change24 < 0 and collection.change24 > -20%}
+            <td bgcolor="red"><b>{{ collection.change24 }} %</b></td>
+            {% elif collection.change24 > 20 or collection.change24 < -20  %}
+            <td bgcolor="yellow"><b>{{ collection.change24 }} %</b></td>
+            {% else %}
+            <td bgcolor="green">{{ collection.change24 }} %</td>
+            {% endif %}
+            <td>{{ collection.reward_points }}</td>
+            <td>{{ collection.floor_price }} CRO</td>
+            <td><button><a href="{{ url_for('floor_price', collection_name=collection.name) }}">GO</a></button></td>
+
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
